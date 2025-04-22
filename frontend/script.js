@@ -1,10 +1,13 @@
-document.getElementById('fetchDataBtn').addEventListener('click', () => {
-    fetch('http://localhost:3000/api/data')
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('backendData').textContent = data.message;
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
-});
+function sendData() {
+  const name = document.getElementById("nameInput").value;
+
+  fetch('/api/save', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name })
+  })
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('response').textContent = data.message;
+    });
+}
