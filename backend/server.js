@@ -13,8 +13,9 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 // MongoDB connection
 mongoose.connect('mongodb://localhost:27017/mydb', {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+  useUnifiedTopology: true
+})
+  .then(() => console.log('Connected to MongoDB'))
 
 // API route
 app.post('/api/save', async (req, res) => {
